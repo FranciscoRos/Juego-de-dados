@@ -1,5 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+
 const JuegoDados_1 = require("./JuegoDados");
 function main() {
     const nombreJugador1 = prompt("Ingrese el nombre del primer jugador:");
