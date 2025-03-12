@@ -1,25 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.JuegoDados = void 0;
-const Jugador_1 = require("./Jugador");
-const Dado_1 = require("./Dado");
-const Jugada_1 = require("./Jugada");
-class JuegoDados {
+import { Jugador } from './Jugador.js';
+import { Dado } from './Dado.js';
+import { Jugada } from './Jugada.js';
+export class JuegoDados {
+    _jugador1;
+    _jugador2;
+    _jugadorUnoElegido = true;
+    _dado1 = new Dado();
+    _dado2 = new Dado();
     ;
+    _marcadorJugador2;
+    _marcadorJugador1;
+    _cantidadJugadas = 0;
+    _vencedor = new Jugador();
     get vencedor() {
         return this._vencedor;
     }
     constructor(nombreJugador, nombreJugador2) {
-        this._jugadorUnoElegido = true;
-        this._dado1 = new Dado_1.Dado();
-        this._dado2 = new Dado_1.Dado();
-        this._cantidadJugadas = 0;
-        this._vencedor = new Jugador_1.Jugador();
         this._marcadorJugador1 = 0;
         this._marcadorJugador2 = 0;
-        this._jugador1 = new Jugador_1.Jugador();
+        this._jugador1 = new Jugador();
         this._jugador1.nombre = nombreJugador;
-        this._jugador2 = new Jugador_1.Jugador();
+        this._jugador2 = new Jugador();
         this._jugador2.nombre = nombreJugador2;
     }
     elegirPrimerLanzador() {
@@ -33,7 +34,7 @@ class JuegoDados {
     }
     iniciarJugada() {
         var jugadaActual;
-        jugadaActual = new Jugada_1.Jugada();
+        jugadaActual = new Jugada();
         if (this._jugadorUnoElegido) {
             jugadaActual.iniciarJugada(this._jugador1, this._jugador2, this._dado1, this._dado2);
         }
@@ -44,8 +45,8 @@ class JuegoDados {
         this._marcadorJugador2 = this._marcadorJugador2 + this._jugador2.puntoGanado;
     }
     iniciarJuego() {
-        this._dado1 = new Dado_1.Dado();
-        this._dado2 = new Dado_1.Dado();
+        this._dado1 = new Dado();
+        this._dado2 = new Dado();
         this._marcadorJugador1 = 0;
         this._marcadorJugador2 = 0;
         this._cantidadJugadas = 0;
@@ -72,4 +73,3 @@ class JuegoDados {
         }
     }
 }
-exports.JuegoDados = JuegoDados;

@@ -1,11 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Jugador = void 0;
-class Jugador {
-    constructor() {
-        this._nombre = "";
-        this._puntoGanado = 0;
-    }
+export class Jugador {
+    _nombre = "";
+    _puntoGanado = 0;
     lanzarDados(dado1, dado2) {
         //Lanzamos los dados
         dado1.lanzar();
@@ -26,4 +21,3 @@ class Jugador {
         this._puntoGanado = puntoGanadoNuevo;
     }
 }
-exports.Jugador = Jugador;

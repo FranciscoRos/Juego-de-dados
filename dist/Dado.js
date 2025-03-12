@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Dado = void 0;
-class Dado {
+export class Dado {
+    _puntos;
     constructor() {
         this._puntos = 0;
     }
@@ -15,4 +13,3 @@ class Dado {
         this._puntos = nuevosPuntos;
     }
 }
-exports.Dado = Dado;

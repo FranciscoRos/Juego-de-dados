@@ -1,26 +1,27 @@
-import * as readlineSync from 'readline-sync';
-import { JuegoDados } from "./JuegoDados";
+import { JuegoDados } from "./JuegoDados.js";
 
-function main(): void {
-  const nombreJugador1 = readlineSync.question("Ingrese el nombre del primer jugador: ");
-  const nombreJugador2 = readlineSync.question("Ingrese el nombre del segundo jugador: ");
+document.addEventListener("DOMContentLoaded", () => {
+    const botonInicio = document.getElementById("iniciarJuego") as HTMLButtonElement;
+    const inputJugador1 = document.getElementById("jugador1") as HTMLInputElement;
+    const inputJugador2 = document.getElementById("jugador2") as HTMLInputElement;
+    const resultado = document.getElementById("resultado") as HTMLHeadingElement;
 
-  if (!nombreJugador1 || !nombreJugador2) {
-    console.log("Se requieren los nombres de los jugadores");
-    return;
-  }
+    botonInicio.addEventListener("click", () => {
+        const nombreJugador1: string = inputJugador1.value.trim();
+        const nombreJugador2: string = inputJugador2.value.trim();
 
-  console.log("\nPrimer jugador: " + nombreJugador1);
-  console.log("Segundo jugador: " + nombreJugador2);
+        if (!nombreJugador1 || !nombreJugador2) {
+            resultado.textContent = "⚠️ Se requieren los nombres de ambos jugadores.";
+            return;
+        }
 
-  var juego: JuegoDados = new JuegoDados(nombreJugador1, nombreJugador2);
-  juego.iniciarJuego();
+        
+        let juego: JuegoDados = new JuegoDados(nombreJugador1, nombreJugador2);
+        juego.iniciarJuego();
 
-  if (juego.vencedor != null) {
-    console.log("El vencedor es: " + juego.vencedor.nombre);
-  } else {
-    console.log("No hay vencedor");
-  }
-}
-
-main();
+        
+        resultado.textContent = juego.vencedor
+            ? `🎲 El vencedor es: ${juego.vencedor.nombre}`
+            : "🎲 No hay vencedor, empate!";
+    });
+});
